@@ -43,7 +43,7 @@ walk actions name =
   case find ((== name) . getName) actions of
     (Just action) ->
       let depsWalk = concatMap (walk actions) (getDependencies action)
-      in (dedupe depsWalk) ++ [(getName action)]
+      in (dedupe depsWalk) ++ [name]
     _ -> []
 
 -- | The main entry point.
